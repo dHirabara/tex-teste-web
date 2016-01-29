@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Usuarios</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="extra.css">
+	
+	<style>
+	div {
+		width: 100 px;
+	}
+	
+	.pagination {
+		position: absolute;
+		right: -500px;
+	}
+	</style>
+	
+</head>
+<body>
+	<br>
+
+	<div class="container" style="position:relative">  
+		<h2>Lista de Usuarios</h2> 
+		
+		<!-- Div para mudar pagina -->
+		<table class="table table-striped" id="tabela">
+		<thead>
+		  <tr>
+			<th></th>
+			<th>Primeiro Nome</th>
+			<th>Ultimo Nome</th>
+			<th>Endereco</th>
+			<th>Email</th>
+			<th>Contato</th>
+			<th>Editar</th>
+			<th>Deletar</th>
+		  </tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>John</td>
+				<td>Nothing</td>
+				<td>Rua Direita, 1</td>
+				<td>john@exemplo.com.br</td>
+				<td>+57 11 92225432</td>
+				<td><a href="form.html"><span class="glyphicon glyphicon-refresh"></a></span></td>
+				<td> <button type="button" class="myBtn"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>Jonnas</td>
+				<td>Silva</td>
+				<td>Rua Direita, 3</td>
+				<td>john@exemplo.com.br</td>
+				<td>+57 11 98733332</td>
+				<td><a href="form.html"><span class="glyphicon glyphicon-refresh"></a></span></td>
+				<td> <button type="button" class="myBtn"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>Diego</td>
+				<td>Nothing</td>
+				<td>Rua Direita, 111</td>
+				<td>john@exemplo.com.br</td>
+				<td>+57 11 11265432</td>
+				<td><a href="form.html"><span class="glyphicon glyphicon-refresh"></a></span></td>
+				<td> <button type="button" class="myBtn"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>John</td>
+				<td>Nada</td>
+				<td>Rua Esquerda, 1</td>
+				<td>john@exemplo.com.br</td>
+				<td>+57 11 98335432</td>
+				<td><a href="form.html"><span class="glyphicon glyphicon-refresh"></a></span></td>
+				<td> <button type="button" class="myBtn"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>Joanidis</td>
+				<td>Avazzo</td>
+				<td>Rua Voluntarios, 221</td>
+				<td>john@exemplo.com.br</td>
+				<td>+57 11 98762232</td>
+				<td><a href="form.html"><span class="glyphicon glyphicon-refresh"></a></span></td>
+				<td> <button type="button" class="myBtn"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button></td>
+			</tr>
+		</tbody>
+	  </table>
+		
+	<!-- Pagination -->	
+		<ul class="pagination">
+		<li class="active"><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		</ul>
+	</div>
+	
+	
+	<!-- Inicio do Modal -->
+	<div class="modal fade" id="myModal" role="dialog" width: 300px>
+		<div class="modal-dialog">
+			<!-- Conteudo do Modal -->
+			<div class="modal-content">
+				<div class="modal-header">
+				  <h4 class="modal-title" id="modalTitulo">DELETE + item</h4>
+				</div>
+				<div class="modal-body">
+				  <p>Voce tem certeza que deseja deletar o registro?</p>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span>Ok</button>
+				  <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+	$(document).ready(function(){
+	//tentei criar uma função para pegar os nomes mas acabou dando meio errado, rever lógica ou id/classes
+	function checkCols(numTr){
+			var count = document.getElementById("tabela").rows.length;
+			var pNome="aa", uNome="bb";
+			for (i=0;i<count;i++)
+				{
+					if (i == numTr) {
+						var colunas = document.getElementById("tabela").rows[i].cells.length;
+						for (ii=0;ii<colunas;ii++)
+						{
+							if (ii==1){
+								pNome = document.getElementById("tabela").rows[i].cells.item(ii).innerHTML;
+							}
+							if (ii==2){
+								uNome = document.getElementById("tabela").rows[i].cells.item(ii).innerHTML;
+								break;
+							}
+						}
+						break;
+					}
+				}
+			return (pNome + " " + uNome);
+	};
+		$("button").click(function(){
+			document.getElementById("modalTitulo").innerHTML = ("Deletar " + checkCols(1) + " ?");
+			e.preventDefault();
+			$("#myModal").modal({backdrop: "static"});
+		});
+		
+	});
+	</script>
+	
+</body>
+</html>
